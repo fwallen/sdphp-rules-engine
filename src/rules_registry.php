@@ -9,6 +9,11 @@ return [
                 'warrior', 'thief',
             ]);
         },
+        function (Character $character) {
+            $expression = new Symfony\Component\ExpressionLanguage\ExpressionLanguage();
+            $rule = 'character.getType() == "Warrior" || character.getType() == "Thief"';
+            return $expression->evaluate($rule, ['character' => $character]);
+        }
     ],
     'add-weapon'             => [
         function (array $facts) {
